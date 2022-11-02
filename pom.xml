@@ -12,7 +12,8 @@
 	
 	<groupId>udemy.spring.5.guru</groupId>
 	<artifactId>sfg-pet-clinic</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
+	
 	<name>sfg-pet-clinic</name>
 	<description>SFG Pet Clinic</description>
 	
@@ -33,9 +34,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
-			<!-- TODO FIXME -->
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
@@ -49,7 +47,6 @@
 	
 	<scm>
 		<developerConnection>scm:git:https://github.com/ArkStyx/udemy-spring-5-guru-pet-clinic.git</developerConnection>
-	  <tag>sfg-pet-clinic-0.0.1</tag>
-  </scm>
+	</scm>
 
 </project>
