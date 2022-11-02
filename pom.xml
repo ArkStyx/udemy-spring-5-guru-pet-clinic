@@ -47,7 +47,7 @@
 	
 	<scm>
 		<developerConnection>scm:git:https://github.com/ArkStyx/udemy-spring-5-guru-pet-clinic.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 </project>
