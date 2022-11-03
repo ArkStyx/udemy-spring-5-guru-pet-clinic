@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Pet {
+public class Pet extends BaseEntity {
 
 	private PetType petType;
 	private Owner owner;
