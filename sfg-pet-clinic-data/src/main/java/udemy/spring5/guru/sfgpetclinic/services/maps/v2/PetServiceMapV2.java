@@ -3,8 +3,9 @@ package udemy.spring5.guru.sfgpetclinic.services.maps.v2;
 import java.util.Set;
 
 import udemy.spring5.guru.sfgpetclinic.models.Pet;
+import udemy.spring5.guru.sfgpetclinic.services.PetService;
 
-public class PetServiceMapV2 extends AbstractMapServiceV2<Pet, Long> {
+public class PetServiceMapV2 extends AbstractMapServiceV2<Pet, Long> implements PetService {
 
 	@Override
 	public Set<Pet> findAll() {
@@ -29,6 +30,12 @@ public class PetServiceMapV2 extends AbstractMapServiceV2<Pet, Long> {
 	@Override
 	public void deleteById(Long id) {
 		super.deleteById(id);
+	}
+	
+	/* -------------------------------------------------- PetService -------------------------------------------------- */
+	@Override
+	public Pet save(Pet pet) {
+		return super.save(pet.getId(), pet);
 	}
 
 }

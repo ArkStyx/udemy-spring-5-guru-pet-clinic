@@ -3,8 +3,9 @@ package udemy.spring5.guru.sfgpetclinic.services.maps.v2;
 import java.util.Set;
 
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
+import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
 
-public class OwnerServiceMapV2 extends AbstractMapServiceV2<Owner, Long> {
+public class OwnerServiceMapV2 extends AbstractMapServiceV2<Owner, Long> implements OwnerService {
 
 	@Override
 	public Set<Owner> findAll() {
@@ -31,4 +32,15 @@ public class OwnerServiceMapV2 extends AbstractMapServiceV2<Owner, Long> {
 		super.deleteById(id);
 	}
 
+	/* -------------------------------------------------- OwnerService -------------------------------------------------- */
+	@Override
+	public Owner findByLastName(String lastName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Owner save(Owner owner) {
+		return super.save(owner.getId(), owner);
+	}
 }

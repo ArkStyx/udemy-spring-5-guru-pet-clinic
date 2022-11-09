@@ -3,9 +3,9 @@ package udemy.spring5.guru.sfgpetclinic.services.maps;
 import java.util.Set;
 
 import udemy.spring5.guru.sfgpetclinic.models.Pet;
-import udemy.spring5.guru.sfgpetclinic.services.CrudService;
+import udemy.spring5.guru.sfgpetclinic.services.PetService;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
 	@Override
 	public Set<Pet> findAll() {
