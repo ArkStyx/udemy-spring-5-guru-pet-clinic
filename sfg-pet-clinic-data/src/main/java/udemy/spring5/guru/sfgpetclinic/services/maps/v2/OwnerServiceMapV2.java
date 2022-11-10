@@ -18,8 +18,8 @@ public class OwnerServiceMapV2 extends AbstractMapServiceV2<Owner, Long> impleme
 	}
 
 	@Override
-	public Owner save(Long id, Owner owner) {
-		return super.save(id, owner);
+	public Owner save(Owner owner) {
+		return super.save(owner);
 	}
 
 	@Override
@@ -37,10 +37,5 @@ public class OwnerServiceMapV2 extends AbstractMapServiceV2<Owner, Long> impleme
 	public Owner findByLastName(String lastName) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public Owner save(Owner owner) {
-		return super.save(owner.getId(), owner);
 	}
 }

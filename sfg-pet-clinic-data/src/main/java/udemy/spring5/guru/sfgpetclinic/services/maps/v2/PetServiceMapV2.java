@@ -18,8 +18,8 @@ public class PetServiceMapV2 extends AbstractMapServiceV2<Pet, Long> implements 
 	}
 
 	@Override
-	public Pet save(Long id, Pet pet) {
-		return super.save(id, pet);
+	public Pet save(Pet pet) {
+		return super.save(pet);
 	}
 
 	@Override
@@ -33,9 +33,5 @@ public class PetServiceMapV2 extends AbstractMapServiceV2<Pet, Long> implements 
 	}
 	
 	/* -------------------------------------------------- PetService -------------------------------------------------- */
-	@Override
-	public Pet save(Pet pet) {
-		return super.save(pet.getId(), pet);
-	}
 
 }

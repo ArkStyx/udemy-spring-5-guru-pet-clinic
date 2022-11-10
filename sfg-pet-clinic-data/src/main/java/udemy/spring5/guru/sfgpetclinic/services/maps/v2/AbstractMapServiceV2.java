@@ -1,15 +1,18 @@
 package udemy.spring5.guru.sfgpetclinic.services.maps.v2;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
+import udemy.spring5.guru.sfgpetclinic.models.BaseEntity;
 import udemy.spring5.guru.sfgpetclinic.services.v2.CrudServiceV2;
 
-public abstract class AbstractMapServiceV2<T, ID> implements CrudServiceV2<T, ID> {
+public abstract class AbstractMapServiceV2<T extends BaseEntity, ID extends Long> implements CrudServiceV2<T, ID> {
 
-	protected Map<ID, T> map = new HashMap<>();
+	protected Map<Long, T> map = new HashMap<>();
 
 	@Override
 	public Set<T> findAll() {
@@ -22,8 +25,16 @@ public abstract class AbstractMapServiceV2<T, ID> implements CrudServiceV2<T, ID
 	}
 
 	@Override
-	public T save(ID id, T t) {
-		map.put(id, t);
+	public T save(T t) {
+		if (t != null) {
+			if (t.getId() == null) {
+				t.setId(getNextId());
+			}
+			map.put(t.getId(), t);
+		}
+		else {
+			throw new RuntimeException("T cannot be null");
+		}
 		return t;
 	}
 
@@ -37,4 +48,13 @@ public abstract class AbstractMapServiceV2<T, ID> implements CrudServiceV2<T, ID
 		map.remove(id);
 	}
 	
+	private Long getNextId() {
+		Long prochainId = null;
+		try {
+			prochainId = Collections.max(map.keySet()) + 1;
+		} catch (NoSuchElementException e) {
+			prochainId = 1L;
+		}
+		return prochainId;
+	}
 }
