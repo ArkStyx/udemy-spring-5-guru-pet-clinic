@@ -1,14 +1,31 @@
 package udemy.spring5.guru.sfgpetclinic.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import udemy.spring5.guru.sfgpetclinic.services.VetService;
 
 @Controller
 public class VetController {
 
+	private final VetService verService;
+
+	public VetController(VetService verService) {
+		super();
+		this.verService = verService;
+	}
+
 	@RequestMapping({"/vets", "/vets/index", "/vets/index.html"})
-	public String listVets() {
+	public String listVets(Model model) {
 		
-		return "vets/index";
+		String nomAttributDansTemplateThymeleaf = "listeVeterinaires";
+		model.addAttribute(nomAttributDansTemplateThymeleaf, verService.findAll());
+		
+		String nomRepertoireThymeleaf = "vets";
+		String nomTemplateThymeleaf = "index";
+		String modelPourRetour = nomRepertoireThymeleaf + "/" + nomTemplateThymeleaf;
+		
+		return modelPourRetour;
 	}
 }
