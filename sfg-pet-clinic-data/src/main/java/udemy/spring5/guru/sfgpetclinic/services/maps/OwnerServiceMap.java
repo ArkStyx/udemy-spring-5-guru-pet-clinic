@@ -2,9 +2,12 @@ package udemy.spring5.guru.sfgpetclinic.services.maps;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
 import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
 	@Override
