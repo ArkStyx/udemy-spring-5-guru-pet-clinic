@@ -8,9 +8,9 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 import udemy.spring5.guru.sfgpetclinic.models.BaseEntity;
-import udemy.spring5.guru.sfgpetclinic.services.v2.CrudServiceV2;
+import udemy.spring5.guru.sfgpetclinic.services.CrudService;
 
-public abstract class AbstractMapServiceV2<T extends BaseEntity, ID extends Long> implements CrudServiceV2<T, ID> {
+public abstract class AbstractMapServiceV2<T extends BaseEntity, ID extends Long> implements CrudService<T, ID> {
 
 	protected Map<Long, T> map = new HashMap<>();
 

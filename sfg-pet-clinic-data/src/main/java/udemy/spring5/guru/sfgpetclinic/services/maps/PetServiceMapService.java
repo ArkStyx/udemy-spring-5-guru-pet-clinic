@@ -8,7 +8,7 @@ import udemy.spring5.guru.sfgpetclinic.models.Pet;
 import udemy.spring5.guru.sfgpetclinic.services.PetService;
 
 @Service
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
+public class PetServiceMapService extends AbstractMapService<Pet, Long> implements PetService {
 
 	@Override
 	public Set<Pet> findAll() {

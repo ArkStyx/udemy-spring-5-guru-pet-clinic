@@ -8,7 +8,7 @@ import udemy.spring5.guru.sfgpetclinic.models.Owner;
 import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
 
 @Service
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+public class OwnerServiceMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
 	@Override
 	public Set<Owner> findAll() {
