@@ -2,9 +2,12 @@ package udemy.spring5.guru.sfgpetclinic.services.maps.v2;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import udemy.spring5.guru.sfgpetclinic.models.Vet;
 import udemy.spring5.guru.sfgpetclinic.services.VetService;
 
+//@Service
 public class VetServiceMapV2 extends AbstractMapServiceV2<Vet, Long> implements VetService {
 
 	@Override
@@ -31,7 +34,5 @@ public class VetServiceMapV2 extends AbstractMapServiceV2<Vet, Long> implements 
 	public void deleteById(Long id) {
 		super.deleteById(id);
 	}
-
-	/* -------------------------------------------------- PetService -------------------------------------------------- */
 
 }

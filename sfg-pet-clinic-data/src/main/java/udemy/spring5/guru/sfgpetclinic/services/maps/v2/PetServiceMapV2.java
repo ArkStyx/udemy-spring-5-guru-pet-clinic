@@ -2,9 +2,12 @@ package udemy.spring5.guru.sfgpetclinic.services.maps.v2;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import udemy.spring5.guru.sfgpetclinic.models.Pet;
 import udemy.spring5.guru.sfgpetclinic.services.PetService;
 
+//@Service
 public class PetServiceMapV2 extends AbstractMapServiceV2<Pet, Long> implements PetService {
 
 	@Override

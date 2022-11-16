@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import udemy.spring5.guru.sfgpetclinic.models.PetType;
 import udemy.spring5.guru.sfgpetclinic.services.PetTypeService;
 
-@Service
+//@Service
 public class PetTypeMapServiceV2 extends AbstractMapServiceV2<PetType, Long> implements PetTypeService {
 
 	@Override

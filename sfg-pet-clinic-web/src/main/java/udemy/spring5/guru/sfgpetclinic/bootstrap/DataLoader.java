@@ -4,9 +4,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
+import udemy.spring5.guru.sfgpetclinic.models.PetType;
 import udemy.spring5.guru.sfgpetclinic.models.Vet;
 import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
 import udemy.spring5.guru.sfgpetclinic.services.PetService;
+import udemy.spring5.guru.sfgpetclinic.services.PetTypeService;
 import udemy.spring5.guru.sfgpetclinic.services.VetService;
 
 @Component
@@ -15,11 +17,13 @@ public class DataLoader implements CommandLineRunner {
 	private final OwnerService ownerService;
 	private final VetService vetService;
 	private final PetService petService;
+	private final PetTypeService petTypeService;
 	
-	public DataLoader(OwnerService ownerService, VetService vetService, PetService petService) {
+	public DataLoader(OwnerService ownerService, VetService vetService, PetService petService, PetTypeService petTypeService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petService = petService;
+		this.petTypeService = petTypeService;
 	}
 
 	@Override
@@ -28,6 +32,14 @@ public class DataLoader implements CommandLineRunner {
 	}
 
 	private void creerProprietairesEtVeterinaires() {
+		
+		PetType dog = new PetType();
+		dog.setName("Dog");
+		petTypeService.save(dog);
+		
+		PetType cat = new PetType();
+		cat.setName("Cat");
+		petTypeService.save(cat);
 		
 		Owner owner01 = new Owner();
 		owner01.setFirstName("Michael");
