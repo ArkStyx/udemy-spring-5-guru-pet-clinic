@@ -1,9 +1,12 @@
 package udemy.spring5.guru.sfgpetclinic.bootstrap;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
+import udemy.spring5.guru.sfgpetclinic.models.Pet;
 import udemy.spring5.guru.sfgpetclinic.models.PetType;
 import udemy.spring5.guru.sfgpetclinic.models.Vet;
 import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
@@ -35,21 +38,43 @@ public class DataLoader implements CommandLineRunner {
 		
 		PetType dog = new PetType();
 		dog.setName("Dog");
-		petTypeService.save(dog);
+		PetType savedPetTypeDog = petTypeService.save(dog);
 		
 		PetType cat = new PetType();
 		cat.setName("Cat");
-		petTypeService.save(cat);
+		PetType savedPetTypeCat = petTypeService.save(cat);
 		
 		Owner owner01 = new Owner();
 		owner01.setFirstName("Michael");
 		owner01.setLastName("Westen");
+		owner01.setAddress("12 rue Quinquiniart");
+		owner01.setCity("Paris");
+		owner01.setTelephone("0123456789");
+		
+		Pet mikePet = new Pet();
+		mikePet.setName("Fido");
+		mikePet.setBirthDate(LocalDate.now());
+		mikePet.setPetType(savedPetTypeDog);
+		mikePet.setOwner(owner01);
+		
+		owner01.getPets().add(mikePet);
 		
 		ownerService.save(owner01);
 		
 		Owner owner02 = new Owner();
 		owner02.setFirstName("Fionna");
 		owner02.setLastName("Glenanne");
+		owner02.setAddress("12 rue Quinquiniart");
+		owner02.setCity("Paris");
+		owner02.setTelephone("0123456789");
+		
+		Pet fionaPet = new Pet();
+		fionaPet.setName("Felix");
+		fionaPet.setBirthDate(LocalDate.now());
+		fionaPet.setPetType(savedPetTypeCat);
+		fionaPet.setOwner(owner02);
+		
+		owner02.getPets().add(fionaPet);
 		
 		ownerService.save(owner02);
 		

@@ -1,5 +1,6 @@
 package udemy.spring5.guru.sfgpetclinic.models;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import lombok.Getter;
@@ -12,5 +13,5 @@ public class Owner extends Person {
 	private String address;
 	private String city;
 	private String telephone;
-	private Set<Pet> pets;
+	private Set<Pet> pets = new LinkedHashSet<>();
 }
