@@ -29,4 +29,10 @@ public class OwnerController {
 		
 		return modelPourRetour;
 	}
+	
+	@RequestMapping("/find")
+	public String findOwners() {
+		return "not-implemented-yet";
+	}
+	
 }

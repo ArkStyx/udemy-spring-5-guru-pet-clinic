@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import udemy.spring5.guru.sfgpetclinic.services.VetService;
 
+@RequestMapping({"/vets", "/vets.html"})
 @Controller
 public class VetController {
 
@@ -16,7 +17,7 @@ public class VetController {
 		this.verService = verService;
 	}
 
-	@RequestMapping({"/vets", "/vets/index", "/vets/index.html"})
+	@RequestMapping({"", "/index", "/index.html"})
 	public String listVets(Model model) {
 		
 		String nomAttributDansTemplateThymeleaf = "listeVeterinaires";
