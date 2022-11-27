@@ -1,4 +1,4 @@
-package udemy.spring5.guru.sfgpetclinic.models;
+package udemy.spring5.guru.sfgpetclinic.models.base;
 
 import java.io.Serializable;
 

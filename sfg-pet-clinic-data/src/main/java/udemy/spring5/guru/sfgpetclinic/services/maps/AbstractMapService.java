@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import udemy.spring5.guru.sfgpetclinic.models.BaseEntity;
+import udemy.spring5.guru.sfgpetclinic.models.base.BaseEntity;
 
 public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
