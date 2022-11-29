@@ -3,21 +3,26 @@ package udemy.spring5.guru.sfgpetclinic.bootstrap;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import lombok.AllArgsConstructor;
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
 import udemy.spring5.guru.sfgpetclinic.models.Pet;
 import udemy.spring5.guru.sfgpetclinic.models.PetType;
 import udemy.spring5.guru.sfgpetclinic.models.Speciality;
 import udemy.spring5.guru.sfgpetclinic.models.Vet;
+import udemy.spring5.guru.sfgpetclinic.models.Visit;
 import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
 import udemy.spring5.guru.sfgpetclinic.services.PetService;
 import udemy.spring5.guru.sfgpetclinic.services.PetTypeService;
 import udemy.spring5.guru.sfgpetclinic.services.SpecialityService;
 import udemy.spring5.guru.sfgpetclinic.services.VetService;
+import udemy.spring5.guru.sfgpetclinic.services.VisitService;
 
+@AllArgsConstructor
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -26,20 +31,14 @@ public class DataLoader implements CommandLineRunner {
 	private final PetService petService;
 	private final PetTypeService petTypeService;
 	private final SpecialityService specialityService;
+	private final VisitService visitService;
 	
-	public DataLoader(OwnerService ownerService, VetService vetService, PetService petService, PetTypeService petTypeService, SpecialityService specialityService) {
-		this.ownerService = ownerService;
-		this.vetService = vetService;
-		this.petService = petService;
-		this.petTypeService = petTypeService;
-		this.specialityService = specialityService;
-	}
-
 	@Override
 	public void run(String... args) throws Exception {
 		if (petService.findAll().size() == 0) {
 			creerProprietaires();
 			creerVeterinaires();
+			creerVisites();
 		}
 	}
 
@@ -50,24 +49,16 @@ public class DataLoader implements CommandLineRunner {
 	}
 	
 	private void creerVeterinaires() {
-		Speciality radiology = new Speciality();
-		radiology.setDescription("Radiology");
-		Speciality savedSpecialityRadiology = specialityService.save(radiology);
-		
-		Speciality dentistry = new Speciality();
-		dentistry.setDescription("Dentistry");
-		Speciality savedSpecialityDentistry = specialityService.save(dentistry);
-		
-		Speciality surgery = new Speciality();
-		surgery.setDescription("Surgery");
-		Speciality savedSpecialitySurgery = specialityService.save(surgery);
-		
+		Speciality specialiteRadiologie = sauvegarderEtRecupererSpecialite("Radiology");
+		Speciality specialiteDentiste = sauvegarderEtRecupererSpecialite("Dentistry");
+		Speciality specialiteChirurgie = sauvegarderEtRecupererSpecialite("Surgery");
+
 		List<Speciality> listeSpecialiteVeterinaire01 = new ArrayList<>();
-		listeSpecialiteVeterinaire01.add(savedSpecialityRadiology);
+		listeSpecialiteVeterinaire01.add(specialiteRadiologie);
 		
 		List<Speciality> listeSpecialiteVeterinaire02 = new ArrayList<>();
-		listeSpecialiteVeterinaire02.add(savedSpecialityDentistry);
-		listeSpecialiteVeterinaire02.add(savedSpecialitySurgery);
+		listeSpecialiteVeterinaire02.add(specialiteDentiste);
+		listeSpecialiteVeterinaire02.add(specialiteChirurgie);
 		
 		gererVeterinaire01(listeSpecialiteVeterinaire01);
 		gererVeterinaire02(listeSpecialiteVeterinaire02);
@@ -139,6 +130,34 @@ public class DataLoader implements CommandLineRunner {
 			vet02.getSpecialities().add(specialite);
 		}
 		vetService.save(vet02);
+	}
+	
+	private Speciality sauvegarderEtRecupererSpecialite(String nomSpecialite) {
+		Speciality specialite = new Speciality();
+		specialite.setDescription(nomSpecialite);
+		return specialityService.save(specialite);
+	}
+	
+	private void creerVisites() {
+		Pet fido = petService.findById(1L);
+		
+		Visit visitFido = new Visit();
+		visitFido.setPet(fido);
+		visitFido.setDate(LocalDate.of(2022, 12, 15));
+		visitFido.setDescription("Visite Fido");
+		
+		visitService.save(visitFido);
+		
+		Pet felix = petService.findById(2L);
+		
+		Visit visitFelix = new Visit();
+		visitFelix.setPet(felix);
+		visitFelix.setDate(LocalDate.of(2022, 12, 15));
+		visitFelix.setDescription("Visite Felix");
+		
+		visitService.save(visitFelix);
+		
+		System.out.println("Loaded Visits...");
 	}
 	
 }
