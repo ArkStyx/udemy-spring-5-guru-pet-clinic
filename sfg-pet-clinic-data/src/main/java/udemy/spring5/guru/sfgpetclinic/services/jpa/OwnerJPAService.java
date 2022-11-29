@@ -17,11 +17,9 @@ import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
 @AllArgsConstructor
 @Service
 @Profile("spring-data-jpa")
-public class OwnerJPARepository implements OwnerService {
+public class OwnerJPAService implements OwnerService {
 
 	private final OwnerRepository ownerRepository;
-	private final PetRepository petRepository;
-	private final PetTypeRepository petTypeRepository;
 
 	@Override
 	public Owner findById(Long id) {
