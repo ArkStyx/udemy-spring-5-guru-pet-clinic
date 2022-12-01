@@ -3,7 +3,6 @@ package udemy.spring5.guru.sfgpetclinic.bootstrap;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -45,6 +44,7 @@ public class DataLoader implements CommandLineRunner {
 	private void creerProprietaires() {
 		gererProprietaire01();
 		gererProprietaire02();
+		new Owner().builder().id(15L).build();
 		System.out.println("Loaded Owners...");
 	}
 	
@@ -76,7 +76,7 @@ public class DataLoader implements CommandLineRunner {
 		owner01.setAddress("12 rue Quinquiniart");
 		owner01.setCity("Paris");
 		owner01.setTelephone("0123456789");
-		
+
 		Pet mikePet = new Pet();
 		mikePet.setName("Fido");
 		mikePet.setBirthDate(LocalDate.now());
