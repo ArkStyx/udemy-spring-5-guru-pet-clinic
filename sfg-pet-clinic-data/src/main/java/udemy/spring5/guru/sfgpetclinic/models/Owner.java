@@ -9,15 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import udemy.spring5.guru.sfgpetclinic.models.base.BasePerson;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "tb_owner")
 public class Owner extends BasePerson {
@@ -33,15 +30,4 @@ public class Owner extends BasePerson {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
 	private Set<Pet> pets = new LinkedHashSet<>();
-
-	@Builder
-	public Owner(Long id, String firstName, String lastName, String address, String city, String telephone,
-			Set<Pet> pets) {
-		super(id, firstName, lastName);
-		this.address = address;
-		this.city = city;
-		this.telephone = telephone;
-		this.pets = pets;
-	}
-	
 }
