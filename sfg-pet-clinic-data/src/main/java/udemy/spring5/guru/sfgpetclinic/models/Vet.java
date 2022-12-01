@@ -3,18 +3,15 @@ package udemy.spring5.guru.sfgpetclinic.models;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.bytebuddy.utility.nullability.MaybeNull;
 import udemy.spring5.guru.sfgpetclinic.models.base.BasePerson;
 
 @Getter
