@@ -1,6 +1,5 @@
 package udemy.spring5.guru.sfgpetclinic.controllers;
 
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -19,6 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
@@ -53,14 +53,15 @@ class OwnerControllerTest {
 		when(ownerService.findAll()).thenReturn(listeProprietaires);
 		
 		// TODO FIXME org.junit.platform.engine.ConfigurationParameters org.junit.platform.launcher.TestPlan
-//		mockMvc.perform(get("/owners"))
-//				.andExpect(status().isOk())
-//				.andExpect(view().name("owners/index"))
-//				.andExpect(model().attribute("listeProprietaires", Matchers.hasSize(2)));
-		
 		mockMvc.perform(get("/owners"))
 				.andExpect(status().isOk())
-				.andExpect(view().name("owners/index"));
+				.andExpect(view().name("owners/index"))
+				.andExpect(model().attribute("listeProprietaires", Matchers.hasSize(2)));
+		
+		
+//		mockMvc.perform(get("/owners"))
+//				.andExpect(status().isOk())
+//				.andExpect(view().name("owners/index"));
 	}
 
 	@Test
