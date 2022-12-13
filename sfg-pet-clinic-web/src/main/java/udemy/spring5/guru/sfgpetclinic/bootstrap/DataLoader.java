@@ -44,7 +44,7 @@ public class DataLoader implements CommandLineRunner {
 	private void creerProprietaires() {
 		gererProprietaire01();
 		gererProprietaire02();
-		new Owner().builder().id(15L).build();
+		Owner.builder().id(15L).build();
 		System.out.println("Loaded Owners...");
 	}
 	
