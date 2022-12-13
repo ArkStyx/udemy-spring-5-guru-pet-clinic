@@ -1,7 +1,6 @@
 package udemy.spring5.guru.sfgpetclinic.services.jpa;
 
 import java.util.LinkedHashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.context.annotation.Profile;
@@ -10,8 +9,6 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
 import udemy.spring5.guru.sfgpetclinic.repositories.OwnerRepository;
-import udemy.spring5.guru.sfgpetclinic.repositories.PetRepository;
-import udemy.spring5.guru.sfgpetclinic.repositories.PetTypeRepository;
 import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
 
 @AllArgsConstructor

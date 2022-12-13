@@ -3,7 +3,6 @@ package udemy.spring5.guru.sfgpetclinic.models.base;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
