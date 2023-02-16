@@ -32,6 +32,7 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		<!-- START - TEST -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -58,6 +59,7 @@
 			<artifactId>mockito-junit-jupiter</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- END - TEST -->
 		
 	</dependencies>
 	

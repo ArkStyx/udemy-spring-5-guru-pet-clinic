@@ -40,6 +40,7 @@ class OwnerJPAServiceTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
+		
 		/*
 		 * FIXME REMPLACE PAR @InjectMocks
 		 */
