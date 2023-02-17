@@ -1,7 +1,8 @@
 package udemy.spring5.guru.sfgpetclinic.controllers;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
@@ -76,7 +77,7 @@ class OwnerControllerTest {
 		mockMvc.perform(get("/owners/123")).
 				andExpect(status().isOk()).
 				andExpect(view().name("owners/ownerDetails")).
-				andExpect(model().attribute("owner", hasProperty("id", is(11))));
+				andExpect(model().attribute("owner", hasProperty("id", is(1L))));
 	}
 
 }
