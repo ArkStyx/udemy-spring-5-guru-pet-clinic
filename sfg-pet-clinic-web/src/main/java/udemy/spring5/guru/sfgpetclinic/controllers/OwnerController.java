@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import udemy.spring5.guru.sfgpetclinic.models.Owner;
 import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
 
 @RequestMapping("/owners")
@@ -35,7 +36,8 @@ public class OwnerController {
 	
 	@RequestMapping("/find")
 	public String findOwners(Model model) {
-		return "not-implemented-yet";
+        model.addAttribute("owner", Owner.builder().build());
+        return "owners/findOwners";
 	}
 	
 	
