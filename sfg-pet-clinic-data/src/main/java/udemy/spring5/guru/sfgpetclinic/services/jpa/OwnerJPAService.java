@@ -1,6 +1,7 @@
 package udemy.spring5.guru.sfgpetclinic.services.jpa;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.context.annotation.Profile;
@@ -49,5 +50,10 @@ public class OwnerJPAService implements OwnerService {
 	public Owner findByLastName(String lastName) {
 		return ownerRepository.findByLastName(lastName);
 	}
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+        return ownerRepository.findAllByLastNameLike(lastName);
+    }
 
 }

@@ -1,5 +1,6 @@
 package udemy.spring5.guru.sfgpetclinic.services.maps.v2;
 
+import java.util.List;
 import java.util.Set;
 
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
@@ -35,6 +36,12 @@ public class OwnerServiceMapV2 extends AbstractMapServiceV2<Owner, Long> impleme
 	/* -------------------------------------------------- OwnerService -------------------------------------------------- */
 	@Override
 	public Owner findByLastName(String lastName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Owner> findAllByLastNameLike(String lastName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
