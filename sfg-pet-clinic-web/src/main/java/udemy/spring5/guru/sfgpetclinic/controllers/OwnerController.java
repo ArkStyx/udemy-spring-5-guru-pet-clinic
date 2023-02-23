@@ -18,10 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
 import udemy.spring5.guru.sfgpetclinic.services.OwnerService;
 
-@RequestMapping("/owners")
 @Controller
+@RequestMapping("/owners")
 public class OwnerController {
 
+    private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
+	
 	private final OwnerService ownerService;
 	
 	public OwnerController(OwnerService ownerService) {
@@ -74,27 +76,7 @@ public class OwnerController {
 		mav.addObject(ownerService.findById(ownerId));
 		return mav;
 	}
-	
-	
-	
-	
-	/*
-	TODO
-	@GetMapping("/new")
-	initCreationForm
-	
-	@PostMapping("/new")
-	processCreationForm
-	
-	@GetMapping("/{ownerId}/edit")
-	initUpdateOwnerForm
-	
-	@PostMapping("/{ownerId}/edit")
-	processUpdateOwnerForm
-	*/
-	
-    private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
-	
+
     @GetMapping("/new")
 	public String initCreationForm(Model model) {
 		model.addAttribute("owner", Owner.builder().build());
