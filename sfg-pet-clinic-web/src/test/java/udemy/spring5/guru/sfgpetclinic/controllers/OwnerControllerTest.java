@@ -80,9 +80,9 @@ class OwnerControllerTest {
 					get("/owners")
 				).
 				andExpect(status().isOk()).
-				andExpect(view().name("owners/ownersList")).
 				andExpect(model().attributeExists("selections")).
-				andExpect(model().attribute("selections", hasSize(2)));
+				andExpect(model().attribute("selections", hasSize(2))).
+				andExpect(view().name("owners/ownersList"));
 	}
 	
 	@Test
@@ -105,16 +105,16 @@ class OwnerControllerTest {
 		
 		mockMvc.perform(get("/owners/123")).
 				andExpect(status().isOk()).
-				andExpect(view().name("owners/ownerDetails")).
-				andExpect(model().attribute("owner", hasProperty("id", is(1L))));
+				andExpect(model().attribute("owner", hasProperty("id", is(1L)))).
+				andExpect(view().name("owners/ownerDetails"));
 	}
 
 	@Test
 	void initCreationForm() throws Exception {
 		mockMvc.perform(get("/owners/new")).
 				andExpect(status().isOk()).
-				andExpect(view().name("owners/createOrUpdateOwnerForm")).
-				andExpect(model().attributeExists("owner"));
+				andExpect(model().attributeExists("owner")).
+				andExpect(view().name("owners/createOrUpdateOwnerForm"));
 		
 		verifyNoInteractions(ownerService);
 	}
@@ -125,8 +125,8 @@ class OwnerControllerTest {
 		
 		mockMvc.perform(post("/owners/new")).
 				andExpect(status().is3xxRedirection()).
-				andExpect(view().name("redirect:/owners/1")).
-				andExpect(model().attributeExists("owner"));
+				andExpect(model().attributeExists("owner")).
+				andExpect(view().name("redirect:/owners/1"));
 		
 		verify(ownerService).save(ArgumentMatchers.any());
 	}
@@ -137,8 +137,8 @@ class OwnerControllerTest {
 		
 		mockMvc.perform(get("/owners/1/edit")).
 				andExpect(status().isOk()).
-				andExpect(view().name("owners/createOrUpdateOwnerForm")).
-				andExpect(model().attributeExists("owner"));
+				andExpect(model().attributeExists("owner")).
+				andExpect(view().name("owners/createOrUpdateOwnerForm"));
 	}
 	
 	@Test
@@ -147,8 +147,8 @@ class OwnerControllerTest {
 		
 		mockMvc.perform(post("/owners/1/edit")).
 				andExpect(status().is3xxRedirection()).
-				andExpect(view().name("redirect:/owners/1")).
-                andExpect(model().attributeExists("owner"));
+                andExpect(model().attributeExists("owner")).
+				andExpect(view().name("redirect:/owners/1"));
 		
 		verify(ownerService).save(ArgumentMatchers.any());
 	}
@@ -168,8 +168,8 @@ class OwnerControllerTest {
 					contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				).
 				andExpect(status().is3xxRedirection()).
-				andExpect(view().name("redirect:/owners/1")).
-				andExpect(model().attributeExists("owner"));
+				andExpect(model().attributeExists("owner")).
+				andExpect(view().name("redirect:/owners/1"));
 		
 		verify(ownerService).save(ArgumentMatchers.any());
 	}
@@ -183,8 +183,8 @@ class OwnerControllerTest {
 					contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				).
 				andExpect(status().is3xxRedirection()).
-				andExpect(view().name("redirect:/owners/1")).
-                andExpect(model().attributeExists("owner"));
+                andExpect(model().attributeExists("owner")).
+				andExpect(view().name("redirect:/owners/1"));
 		
 		verify(ownerService).save(ArgumentMatchers.any());
 	}
