@@ -145,7 +145,7 @@ public class PetControllerTest {
 				andExpect(status().is3xxRedirection()).
 				andExpect(view().name("redirect:/owners/1"));
 		
-		verify(petTypeService).save(ArgumentMatchers.any());
+		verify(petService).save(ArgumentMatchers.any());
 	}
 	
 }

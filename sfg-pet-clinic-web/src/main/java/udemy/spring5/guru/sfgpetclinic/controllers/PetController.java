@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -55,21 +54,7 @@ public class PetController {
 	public void initOwnerBinder(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
 	}
-	
-	
-	
-	/*
-	TODO
-	
-	void initCreationForm() throws Exception {
-		
-	void processCreationForm() throws Exception {
 
-	void initUpdateOwnerForm() throws Exception {
-
-	void processUpdateOwnerForm() throws Exception {
-	*/
-	
     @GetMapping("/pets/new")
     public String initCreationForm(Owner owner, Model model) {
         Pet pet = new Pet();
@@ -96,16 +81,24 @@ public class PetController {
         }
     }
     
+    @GetMapping("/pets/{petId}/edit")
+    public String initUpdateOwnerForm(Model model, @PathVariable Long petId) {
+    	model.addAttribute("pet", petService.findById(petId));
+    	return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @PostMapping("/pets/{petId}/edit")
+    public String processUpdateForm(@Validated Pet pet, BindingResult result, Owner owner, Model model) {
+        if (result.hasErrors()) {
+            pet.setOwner(owner);
+            model.addAttribute("pet", pet);
+            return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
+        }
+        else {
+            owner.getPets().add(pet);
+            petService.save(pet);
+            return "redirect:/owners/" + owner.getId();
+        }
+    }
 	
 }
