@@ -71,6 +71,21 @@ public class PetControllerTest {
 		petTypes.add(dogType);
 		petTypes.add(catType);
 	}
+	
+	@Test
+	void populatePetTypes() {
+		// TODO implementation
+	}
+	
+	@Test
+	void findOwner() {
+		// TODO implementation
+	}
+	
+	@Test
+	void initOwnerBinder() {
+		// TODO implementation
+	}
 
 	@Test
 	void initCreationForm() throws Exception {
@@ -93,13 +108,13 @@ public class PetControllerTest {
 		when(ownerService.findById(anyLong())).thenReturn(owner);
 		when(petTypeService.findAll()).thenReturn(petTypes);
 		
-		mockMvc.perform(
-					post("/owners/1/pets/new")
-				).
-				andExpect(status().is3xxRedirection()).
-				andExpect(view().name("redirect:/owners/1"));
-		
-		verify(petTypeService).save(ArgumentMatchers.any());
+        mockMvc.perform(
+        			post("/owners/1/pets/new")
+		        ).
+		        andExpect(status().is3xxRedirection()).
+		        andExpect(view().name("redirect:/owners/1"));
+
+        verify(petService).save(ArgumentMatchers.any());
 	}
 	
 	@Test
@@ -131,21 +146,6 @@ public class PetControllerTest {
 				andExpect(view().name("redirect:/owners/1"));
 		
 		verify(petTypeService).save(ArgumentMatchers.any());
-	}
-	
-	@Test
-	void populatePetTypes() {
-		// TODO implementation
-	}
-	
-	@Test
-	void findOwner() {
-		// TODO implementation
-	}
-	
-	@Test
-	void initOwnerBinder() {
-		// TODO implementation
 	}
 	
 }
