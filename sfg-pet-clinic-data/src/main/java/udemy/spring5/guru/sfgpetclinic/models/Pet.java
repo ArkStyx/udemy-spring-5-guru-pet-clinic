@@ -12,13 +12,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import udemy.spring5.guru.sfgpetclinic.models.base.BaseEntity;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tb_pet")
 public class Pet extends BaseEntity {
 
@@ -41,4 +46,15 @@ public class Pet extends BaseEntity {
 	 */
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
 	private Set<Visit> visits = new LinkedHashSet<>();
+
+	@Builder
+	public Pet(Long id, String name, PetType petType, LocalDate birthDate, Owner owner, Set<Visit> visits) {
+		super(id);
+		this.name = name;
+		this.petType = petType;
+		this.birthDate = birthDate;
+		this.owner = owner;
+		this.visits = visits;
+	}
+	
 }
