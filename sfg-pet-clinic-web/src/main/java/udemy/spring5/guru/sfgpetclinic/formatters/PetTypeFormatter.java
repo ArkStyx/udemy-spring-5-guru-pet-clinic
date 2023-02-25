@@ -10,6 +10,12 @@ import org.springframework.stereotype.Component;
 import udemy.spring5.guru.sfgpetclinic.models.PetType;
 import udemy.spring5.guru.sfgpetclinic.services.PetTypeService;
 
+/*
+ * TODO CLASSE POUR CORRIGER L'ERREUR SUIVANTE DANS L'IHM : createOrUpdatePetForm.html
+ * Caused by: org.springframework.core.convert.ConversionFailedException: 
+ * Failed to convert from type [java.lang.String] to type [java.lang.Long] for value 'Cat'; 
+ * nested exception is java.lang.NumberFormatException: For input string: "Cat"
+ */
 @Component
 public class PetTypeFormatter implements Formatter<PetType> {
 
