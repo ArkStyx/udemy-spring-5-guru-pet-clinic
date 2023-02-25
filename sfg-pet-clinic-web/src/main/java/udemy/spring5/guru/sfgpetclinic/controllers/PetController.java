@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import udemy.spring5.guru.sfgpetclinic.models.Owner;
@@ -59,6 +58,7 @@ public class PetController {
     public String initCreationForm(Owner owner, Model model) {
         Pet pet = new Pet();
         owner.getPets().add(pet);
+        pet.setOwner(owner);
         model.addAttribute("pet", pet);
         return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
     }
