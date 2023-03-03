@@ -40,11 +40,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<scope>runtime</scope>
+			</dependency>
 			
 		<!-- START - TEST -->
 		<dependency>
@@ -132,9 +132,6 @@
 						<version>2.23.0</version>
 					</dependency>
 				</dependencies>
-            </plugin>
-			<plugin>
-            	<artifactId>maven-surefire-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
