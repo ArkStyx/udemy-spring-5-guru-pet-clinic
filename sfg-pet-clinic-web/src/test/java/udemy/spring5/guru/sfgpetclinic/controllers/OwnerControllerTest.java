@@ -42,14 +42,15 @@ class OwnerControllerTest {
 	@InjectMocks
 	OwnerController ownerController;
 	
-	Set<Owner> listeProprietaires;
-	Long idProprietaire01 = 1L;
-	Long idProprietaire02 = 2L;
-	
 	MockMvc mockMvc;
+	
+	Set<Owner> listeProprietaires;
 	
 	@BeforeEach
 	void setUp() throws Exception {
+		Long idProprietaire01 = 1L;
+		Long idProprietaire02 = 2L;
+		
 		listeProprietaires = new LinkedHashSet<>();
 		listeProprietaires.add(Owner.builder().id(idProprietaire01).build());
 		listeProprietaires.add(Owner.builder().id(idProprietaire02).build());
@@ -99,6 +100,24 @@ class OwnerControllerTest {
 				andExpect(view().name("redirect:/owners/1"));
 	}
 
+    @Test
+    void processFindFormEmptyReturnMany() throws Exception {
+    	
+		Owner proprietaire01 = Owner.builder().id(1L).build();
+		Owner proprietaire02 = Owner.builder().id(2L).build();
+		List<Owner> listeProprietaires = Arrays.asList(proprietaire01, proprietaire02);
+
+        when(ownerService.findAllByLastNameLike(anyString())).thenReturn(listeProprietaires);
+
+        mockMvc.perform(
+        			get("/owners").
+        			param("lastName","")
+        		).
+                andExpect(status().isOk()).
+                andExpect(view().name("owners/ownersList")).
+                andExpect(model().attribute("selections", hasSize(2)));;
+    }
+	
 	@Test
 	void displayOwner() throws Exception {
 		when(ownerService.findById(anyLong())).thenReturn(Owner.builder().id(1L).build());

@@ -1,5 +1,11 @@
 package udemy.spring5.guru.sfgpetclinic.controllers;
 
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyEditor;
+import java.beans.PropertyEditorSupport;
+import java.time.LocalDate;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -29,8 +35,14 @@ public class VisitController {
     }
 
     @InitBinder
-    public void setAllowedFields(WebDataBinder dataBinder) {
-        dataBinder.setDisallowedFields("id");
+    public void configureWebDataBinder(WebDataBinder webDataBinder) {
+    	webDataBinder.setDisallowedFields("id");
+    	webDataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
+			@Override
+			public void setAsText(String dateAuFormatString) throws IllegalArgumentException {
+				setValue(LocalDate.parse(dateAuFormatString));
+			}
+        });
     }
 
     /**
@@ -72,9 +84,9 @@ public class VisitController {
     public String processNewVisitForm(@Validated Visit visit, BindingResult result) {
         if (result.hasErrors()) {
             return "pets/createOrUpdateVisitForm";
-        } else {
+        }
+        else {
             visitService.save(visit);
-
             return "redirect:/owners/{ownerId}";
         }
     }
